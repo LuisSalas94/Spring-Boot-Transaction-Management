@@ -1,4 +1,5 @@
 package net.fernandosalas.springboot.service.implementation;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import net.fernandosalas.springboot.dto.OrderRequest;
 import net.fernandosalas.springboot.dto.OrderResponse;
@@ -27,6 +28,7 @@ public class OrderServiceImplementation implements OrderService {
     }
 
     @Override
+    @Transactional
     public OrderResponse placeOrder(OrderRequest orderRequest) {
         Order order = orderRequest.getOrder();
         order.setStatus("In Progress");
